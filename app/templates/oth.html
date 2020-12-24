@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="service_area">
+        <div class="container">
+            <h1>Add Other Details</h1> 
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.other_details.label }}<br>
+            {{ form.other_details(class="form-control", placeholder='Tell about yourself like your achievements, positions of responsibility, hobbies etc.') }}<br>
+            {% for error in form.other_details.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.profile.label }}<br>
+            {{ form.profile(class="form-control", placeholder='Professional Summary') }}<br>
+            {% for error in form.profile.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.skills.label }}<br>
+            {{ form.skills(class="form-control", placeholder='Skills') }}<br>
+            {% for error in form.skills.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+       
+        <p>{{ form.submit(class="btn btn-primary") }}</p>
+    </form>
+        </div>
+    </div>
+{% endblock %}

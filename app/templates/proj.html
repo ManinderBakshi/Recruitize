@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="service_area">
+        <div class="container">
+            <h1>Add Project</h1> 
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.project_Name.label }}<br>
+            {{ form.project_Name(class="form-control", placeholder='Project Name') }}<br>
+            {% for error in form.project_Name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.project_details.label }}<br>
+            {{ form.project_details(class="form-control", placeholder='Project Details') }}<br>
+            {% for error in form.project_details.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.year.label }}<br>
+            {{ form.year(class="form-control", placeholder='Project Year') }}<br>
+            {% for error in form.year.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+       
+        <p>{{ form.submit(class="btn btn-primary") }}</p>
+    </form>
+        </div>
+    </div>
+{% endblock %}

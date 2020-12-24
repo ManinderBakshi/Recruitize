@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="service_area">
+        <div class="container">
+            <h1>Add Experience</h1> 
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.organization_name.label }}<br>
+            {{ form.organization_name(class="form-control", placeholder='Organization/Company Name') }}<br>
+            {% for error in form.organization_name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.position.label }}<br>
+            {{ form.position(class="form-control", placeholder='Your Position') }}<br>
+            {% for error in form.position.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.duration_in_months.label }}<br>
+            {{ form.duration_in_months(class="form-control", placeholder='Duration in months') }}<br>
+            {% for error in form.duration_in_months.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.details.label }}<br>
+            {{ form.details(class="form-control", placeholder='Job Details') }}<br>
+            {% for error in form.details.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+       
+        <p>{{ form.submit(class="btn btn-primary") }}</p>
+    </form>
+        </div>
+    </div>
+{% endblock %}

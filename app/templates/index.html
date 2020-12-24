@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+  <!-- ======= Employer Section ======= -->
+  <section id="hero" style="margin-top: 70px;">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="fade-up">
+          <div>
+            <h1>Your next Job is here!</h1>
+            <h2>Get your Resume analysis report for FREE within just few clicks and improve your chances of getting Hired.</h2>
+            <a href="#login" class="btn-get-started scrollto" style="text-decoration: none;">Get Started</a>
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">
+          <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_8hddy41z.json"  background="transparent"  speed="0.4"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Employer  -->
+  <!-- ======= Recruiter Section ======= -->
+    <section id="hero">
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 order-2 order-lg-1 hero-img" data-aos="fade-left">
+              <lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_yPKMfX.json"  background="transparent"  speed="0.3"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>
+              </div>
+            <div class="col-lg-6 pt-5 pt-lg-0 order-1 order-lg-2 d-flex flex-column justify-content-center" data-aos="fade-up">
+              <div>
+                <h1>Your next Hire is here!</h1>
+                <h2>Post a Job Description and get the Resumes along with the Resume Matching Percentage.</h2>
+                <a href="#login" class="btn-get-started scrollto" style="text-decoration: none;">Get Started</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Recruiter  -->
+
+    <section class="border rounded" id="login">
+        <div class="slider_area" >
+            <div class="container">
+                <div >
+                    <div class="row align-items-center justify-content-start" > 
+                        <div class="col-lg-10 col-md-10" >
+                            <div class="slider_text" >
+                                <h1>
+                                    Sign In  </h1>
+                                    <form action="" method="post" novalidate>
+                                        {{form.hidden_tag()}}
+                                        
+                                        <p>New User? <a href="{{ url_for('auth.register') }}" style="text-decoration: none;">Register your account</a></p>
+                                
+                                        <p>
+                                            {{form.username.label}}<br>
+                                            {{form.username(class="form-control") }}
+                                            {% for error in form.username.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}
+                                        </p>
+                                        <p>
+                                            {{form.password.label}}<br>
+                                            {{form.password(class="form-control")}}
+                                            {%for error in form.password.errors %}
+                                            <span style="color:red;">[{{error}}]</span>
+                                            {% endfor %}
+                                        </p>
+                                        <p>{{form.submit(class="btn btn-primary")}}</p>
+                                        <p>
+                                            Forgot Your Password?
+                                            <a href="{{ url_for('auth.reset_password_request') }}" style="text-decoration: none;">Click to Reset It</a>
+                                        </p>
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="service_area">
+        <div class="container">
+            <h1>Add Qualification</h1> 
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.course.label }}<br>
+            {{ form.course(class="form-control", placeholder='Course Name') }}<br>
+            {% for error in form.course.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.college.label }}<br>
+            {{ form.college(class="form-control", placeholder='Institution Name') }}<br>
+            {% for error in form.college.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.year.label }}<br>
+            {{ form.year(class="form-control", placeholder='Year of Completion') }}<br>
+            {% for error in form.year.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.percentage.label }}<br>
+            {{ form.percentage(class="form-control", placeholder='Percentage/CGPA/SGPA') }}<br>
+            {% for error in form.percentage.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.subjects.label }}<br>
+            {{ form.subjects(class="form-control", placeholder='Main Stream or Subjects') }}<br>
+            {% for error in form.subjects.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+       
+        <p>{{ form.submit(class="btn btn-primary") }}</p>
+    </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,267 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+  <!-- ======= Welcome Section ======= -->
+  <section id="welcome" style="margin-top: 70px;">
+
+    <div class="container">
+        <div class="text-center">
+            <div class="col-sm-12 " style="margin-left: 15%; margin-bottom: 5%; margin-top: -5%;">
+              <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_Lcwy20.json"  background="transparent"  speed="1"  style="width: 800px; height: 400px;"  loop  autoplay></lottie-player>
+            </div>
+            <div><h1>Welcome To Recruitize!</h1></div>
+        </div>
+      
+      </div>
+    </div>
+  </section>
+  <!-- End Welcome  -->
+
+  {% if current_user.recruiter == false %}
+    <!-- ======= Upload Resume  Section ======= -->
+    <section id="hero">
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="fade-up">
+              <div>
+                <h1>Upload your Resume!</h1>
+                <h2>Searching for a Job? Don't worry, we will land your Resume at the right place.</h2>
+                <a href="{{ url_for('main.add_resume') }}" class="btn-get-started scrollto" style="text-decoration: none;">Upload Resume</a>
+              </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">
+              <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_AXoQyR.json"  background="transparent"  speed="0.5"  style="width: 500px; height: 400px;"  loop  autoplay></lottie-player>
+            </div>
+          </div>
+        </div>
+    
+      </section><!-- End Upload Resume -->
+
+      <!-- ======= Resume Scan Section ======= -->
+    <section id="hero">
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 order-2 order-lg-1 hero-img" data-aos="fade-left">
+              <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_5Hkbhv.json"  background="transparent"  speed="0.5"  style="width: 500px; height: 400px;"  loop  autoplay></lottie-player>
+              </div>
+            <div class="col-lg-6 pt-5 pt-lg-0 order-1 order-lg-2 d-flex flex-column justify-content-center" data-aos="fade-up">
+              <div>
+                <h1>Still confused for your Position?</h1>
+                <h2>Based on your Skills, Recruitize will identify the best roles for you in the Industry.
+                    Also get your free Resume Feedback Report and know the improvement areas in your Resume.
+                </h2>
+                <a href="{{ url_for('main.show_resumes') }}" class="btn-get-started scrollto" style="text-decoration: none;">Scan Resume</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End scan  -->
+
+      <!-- ======= Resume Builder Section ======= -->
+    <section id="hero">
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="fade-up">
+              <div>
+                <h1>Don't have a Resume?</h1>
+                <h2>No need to worry. Recruitize will create a professional Resume for you!</h2>
+                <a href="{{ url_for('main.resume_builder') }}" class="btn-get-started scrollto" style="text-decoration: none;">Resume Builder</a>
+              </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">
+              <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_0i7tmxi6.json"  background="transparent"  speed="0.8"  style="width: 500px; height: 400px;"  loop  autoplay></lottie-player>
+              </div>
+          </div>
+        </div>
+      </section>
+      <!-- End resume builder  -->
+  {% else %}
+
+  {% endif %}
+  
+  <!-- ======= Features Section ======= -->
+  <section id="features" class="features">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-6 mt-2 mb-tg-0 order-2 order-lg-1">
+          <ul class="nav nav-tabs flex-column">
+            <li class="nav-item" data-aos="fade-up">
+              <a class="nav-link active show" data-toggle="tab" href="#tab-1">
+                <h4>End-to-End Recruitment!</h4>
+                <p>Fresher hiring was never this simple! We provide end-to-end hiring solutions.
+                  Tell us your criteria and our team of experts will take care of your hiring worries.</p>
+              </a>
+            </li>
+            <li class="nav-item mt-2" data-aos="fade-up" data-aos-delay="100">
+              <a class="nav-link" data-toggle="tab" href="#tab-2">
+                <h4>Fast and Easy Resume Builder</h4>
+                <p>Recruitize’s online resume builder makes it fast and easy to create a resume that will get you noticed.</p>
+              </a>
+            </li>
+            <li class="nav-item mt-2" data-aos="fade-up" data-aos-delay="200">
+              <a class="nav-link" data-toggle="tab" href="#tab-3">
+                <h4>FREE Job Posting</h4>
+                <p>Post Job in 30 Seconds! It's that Easy! Hire Freshers & Entry Level
+                    Candidates from all over India. Instant responses guaranteed!</p>
+              </a>
+            </li>
+            <li class="nav-item mt-2" data-aos="fade-up" data-aos-delay="300">
+              <a class="nav-link" data-toggle="tab" href="#tab-4">
+                <h4> Land for a Free Resume Review </h4>
+                <p> Go forward for the feedback and get resume score and an extended report with information what needs to be fixed. </p>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 " data-aos="zoom-in">
+          <div class="tab-content ">
+            <div class="tab-pane active" id="tab-1">
+              <figure>
+                <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_qDHlG2.json"  background="transparent"  speed="0.5"  style="width: 500px; height: 400px;"  loop autoplay></lottie-player>
+              </figure>
+            </div>
+            <div class="tab-pane" id="tab-2">
+              <figure>
+                <lottie-player src="https://assets3.lottiefiles.com/private_files/lf30_gcroxmlt.json"  background="transparent"  speed="0.5"  style="width: 500px; height: 400px;"  loop  autoplay></lottie-player>              </figure>
+            </div>
+            <div class="tab-pane"  id="tab-3">
+              <figure>
+                <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_6SMIzX.json"  background="transparent"  speed="0.5"  style="width: 500px; height: 400px;"  loop  autoplay></lottie-player>
+              </figure>
+            </div>
+            <div class="tab-pane" id="tab-4">
+              <figure>
+                <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_U8MhmH.json"  background="transparent"  speed="0.5"  style="width: 500px; height: 400px;"  loop  autoplay></lottie-player>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Features Section -->
+
+  <!-- ======= Services Section ======= -->
+  <section id="services" class="services section-bg">
+    <div class="container">
+
+      <div class="section-title" data-aos="fade-up">
+        <h2>Services</h2>
+        <p>Built for the Digital Native Employees.
+        </p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in">
+          <div class="icon-box icon-box-pink">
+            <div class="icon"><i class="bx bx-user-check"></i></div>
+            <h4 class="title"><a href="">Instant Feedback</a></h4>
+            <p class="description">Upload your Resume and try our Scanner to get instant feedback report on your resume.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="100">
+          <div class="icon-box icon-box-cyan">
+            <div class="icon"><i class="bx bx-id-card"></i></div>
+            <h4 class="title"><a href="">Resume Builder</a></h4>
+            <p class="description">Try our Resume Builder and create a professional looking resume for you absolutely free!</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
+          <div class="icon-box icon-box-green">
+            <div class="icon"><i class="bx bx-briefcase-alt-2"></i></div>
+            <h4 class="title"><a href="">Post Job</a></h4>
+            <p class="description">Post a Job description and get resumes instantly along with the JD-Resme Matching Percentage.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="300">
+          <div class="icon-box icon-box-blue">
+            <div class="icon"><i class="bx bx-trending-up"></i></div>
+            <h4 class="title"><a href="">Hire 2X faster</a></h4>
+            <p class="description">Get fast, easy, affordable solutions to help you find the right people, for the right jobs</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Services Section -->
+
+  <!-- ======= Contact Section ======= -->
+  <section id="contact" class="contact section-bg">
+    <div class="container">
+
+      <div class="section-title" data-aos="fade-up">
+        <h2>Contact Us</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-lg-5 d-flex align-items-stretch" data-aos="fade-right">
+          <div class="info">
+            <div class="address">
+              <i class="icofont-google-map"></i>
+              <h4>Location:</h4>
+              <p>Dayalbagh Educational Institute
+                  Dayalbagh,Agra
+                Uttar Pradesh
+                282 005
+                INDIA. </p>
+            </div>
+
+            <div class="email">
+              <i class="icofont-envelope"></i>
+              <h4>Email:</h4>
+              <p>recruitize.dei@gmail.com</p>
+            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3547.7155359047656!2d78.01176675000313!3d27.22807955291475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397479f97de6b363%3A0x8b2eff7491666ffa!2sDayalbagh%20Educational%20Institute!5e0!3m2!1sen!2sin!4v1596278746565!5m2!1sen!2sin" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+
+          </div>
+
+        </div>
+
+        <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-left">
+          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="name">Your Name</label>
+                <input type="text" name="name" class="form-control" readonly id="name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="name">Your Email</label>
+                <input type="email" class="form-control" readonly name="email" id="email" data-rule="email" data-msg="Please enter a valid email" />
+                <div class="validate"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="name">Subject</label>
+              <input type="text" class="form-control" readonly name="subject" id="subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+              <div class="validate"></div>
+            </div>
+            <div class="form-group">
+              <label for="name">Message</label>
+              <textarea class="form-control" name="message" rows="10" readonly data-rule="required" data-msg="Please write something for us"></textarea>
+              <div class="validate"></div>
+            </div>
+            <div class="mb-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Contact Section -->
+{% endblock %}

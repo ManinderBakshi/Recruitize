@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="service_area">
+    <div class="container">
+        <h1>Add Demographic Details</h1> 
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.first_name.label }}<br>
+                {{ form.first_name(class="form-control", placeholder='First Name') }}<br>
+                {% for error in form.first_name.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.last_name.label }}<br>
+                {{ form.last_name(class="form-control", placeholder='Last Name') }}<br>
+                {% for error in form.last_name.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.position.label }}<br>
+                {{ form.position(class="form-control", placeholder='Current Position') }}<br>
+                {% for error in form.position.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.dob.label }}<br>
+                <input class="form-control" type="date" name="dob" id="dob"><br>
+                {% for error in form.dob.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.gender.label }}<br>
+                {{ form.gender(class="form-control") }}<br>
+                {% for error in form.gender.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.nationality.label }}<br>
+                {{ form.nationality(class="form-control", placeholder='Nationality') }}<br>
+                {% for error in form.nationality.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.submit(class="btn btn-primary") }}</p>
+        </form>
+    </div>
+</div>
+{% endblock %}

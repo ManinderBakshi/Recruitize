@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+{% if current_user.recruiter == false %}
+<div id="hero">
+    <div class="service_area">
+        <div class="container">
+            <h1>Hi, {{ current_user.username }}! </h1>
+            <h3>Below is the list of Resumes you have submitted.</h3>
+        <a href="{{ url_for('main.add_resume')}}" class="btn btn-success">Add more</a>
+        <hr style="height:1px; border:none; color:#000; background-color:#000;">
+    
+        
+        
+        {% if resume_list  %}
+            {% for i in resume_list %}
+    
+            <table class="table table-hover">
+                <td>
+                    <p>File Name: {{i['filename']}}</p>
+                    <p>Applied for: {{ i['position'] }}</p>
+                     
+                    
+                </td>
+                <td>
+                    <a href="{{ url_for('main.scan_resume',filename=i.filename) }}" class="btn btn-primary">Scan</a>
+                    <br>
+                    <br>
+                    <a href="{{ url_for('main.uploaded_resume', filename=i.filename) }}" class="btn btn-warning">View</a>
+                    <br>
+                    <br>
+                    <a href="{{ url_for('main.delete_resume', resume_id=i.id) }}" class="btn btn-danger">Delete </a>
+                </td>
+            </table>    
+            {% endfor %}
+        {% else %}
+                <table class="table table-hover">
+                    <td>
+                        <a href="{{ url_for('main.add_resume')}}" class="btn btn-primary">Add Resumes</a>
+                    </td>
+                </table>
+           
+        {% endif %}
+        <hr style="height:1px; border:none; color:#000; background-color:#000;">
+    </div>
+</div>
+{% else %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>You are not authorized to access this page</h1>
+{% endif %}
+{% endblock %}

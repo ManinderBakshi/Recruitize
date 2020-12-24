@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="service_area">
+        <div class="container">
+            <h1>Add Certification</h1> 
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.course.label }}<br>
+            {{ form.course(class="form-control", placeholder='Course Name') }}<br>
+            {% for error in form.course.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.organization.label }}<br>
+            {{ form.organization(class="form-control", placeholder="Organization from where you've got the Certificate") }}<br>
+            {% for error in form.organization.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.credentials.label }}<br>
+            {{ form.credentials(class="form-control", placeholder='Certificate Number') }}<br>
+            {% for error in form.credentials.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+       
+        <p>{{ form.submit(class="btn btn-primary")}}</p>
+    </form>
+        </div>
+    </div>
+{% endblock %}

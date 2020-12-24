@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+{% if current_user.recruiter == false %}
+
+<div class="slider_area">
+    <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
+        <div class="container">
+            <div class="row align-items-center justify-content-start">
+                <div class="col-lg-10 col-md-10">
+                    <div class="slider_text">
+                        <h3 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".1s">
+                          Hi, {{current_user.username}}  </h3>
+
+                          <p style="color: gainsboro; font-size: large;">“Take the path less traveled and learn from your mistakes. Don’t just let life happen around you; control your future.
+                              Learn to ask questions, set small goals, and dream of big ones.
+                              Absorb any criticism and let it fuel you. 
+                              Convince others that you are worthy of your dream,
+                              and show them that you are willing to
+                              put up a damn good fight for it.”</p>
+                            <div style="margin-top: 80px;">
+                                <a class="boxed-btn3 wow fadeInLeft"  data-wow-duration="1s" style="margin-right: 35px;" data-wow-delay=".2s" href="{{ url_for('main.add_resume') }}">Upload Resume</a>
+                                <a class="boxed-btn2 wow fadeInLeft"  data-wow-duration="1s" style="margin-right: 35px;"  data-wow-delay=".2s" href="{{ url_for('main.home_student') }}">Create Resume</a>
+                                <a class="boxed-btn3 wow fadeInLeft"  data-wow-duration="1s" style="margin-right: 35px;" data-wow-delay=".2s" href="{{ url_for('main.show_resumes') }}">Scan Resume</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>You are not authorized to access this page</h1>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+{% if current_user.recruiter == true %}
+<div class="service_area">
+    <div class="container">
+        <h1>Hi, {{ current_user.username }}! </h1>
+        <h3>Below is the list of Jobs you have posted.</h3>
+    <a href="{{ url_for('main.recruiter')}}" class="btn btn-success">Add more</a>
+    <hr style="height:1px; border:none; color:#000; background-color:#000;">
+
+    
+    
+    {% if jd_list  %}
+        {% for i in jd_list %}
+
+        <table class="table table-hover">
+            <td>
+                <p>Job Requirements (in Skills): {{i['details']}}</p>
+                <p>Job Position: {{ i['position'] }}</p> 
+            </td>
+            <td>
+                <a href="{{ url_for('main.match_jd', jd_position=i.position, jd_details=i.details) }}" class="btn btn-primary">View Resumes</a>
+                
+                <br>
+                <br>
+                <a href="{{ url_for('main.delete_jd', jd_id=i.id) }}" class="btn btn-danger">Delete </a>
+            </td>
+        </table>    
+        {% endfor %}
+    {% else %}
+            <table class="table table-hover">
+                <td>
+                    <a href="{{ url_for('main.recruiter')}}" class="btn btn-primary">Add JDs</a>
+                </td>
+            </table>
+       
+    {% endif %}
+    <hr style="height:1px; border:none; color:#000; background-color:#000;">
+</div>
+{% else %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>You are not authorized to access this page</h1>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+{% if current_user.recruiter == true %}
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+  
+        <h1>Update a Job Description</h1>
+        <hr>
+  
+        <form action="/user/update_jd/<int:jd_id>" method="PUT" enctype="multipart/form-data">
+  
+          <div class="form-group" style="margin: 30px;">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Give requirements:</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="details"></textarea>
+              </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <label for="position">Select the positions for which you are applying for:</label>
+            <select class="form-control" name="position" id="position">
+              <option>Front End Development</option>
+              <option>Back End Development</option>
+              <option>Full Stack Development</option>
+              <option>Machine Learning </option>
+              <option>Artificial Intelligence</option>
+              <option>Software Development</option>
+              <option>Data Analyst</option>
+              <option>UX Designer & UI Developer</option>
+              <option>Data Entry</option>
+              <option>DevOps Engineer</option>
+              <option>Network Administrator</option>
+              <option>Cloud Architect</option>
+              <option>Technical Specialist</option>
+              <option>Sales Analyst</option>
+              <option>Virtual Assistant</option>
+              <option>Human Resource</option>
+              <option>Project Management</option>
+              <option>Sales Manager</option>
+              <option>Marketing Officer</option>
+              <option>Assistant Manager</option>
+            </select>
+          </div>
+  
+          <button type="submit" class="btn btn-primary" style="margin-bottom: 50px;">Submit</button>
+  
+        </form>
+  
+      </div>
+    </div>
+  </div>
+    </div>
+</div>
+{% else %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>You are not authorized to access this page</h1>
+{% endif %}
+{% endblock %}

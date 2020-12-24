@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="service_area">
+        <div class="container">
+            <h1>Add Contact Details</h1> 
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(class="form-control", placeholder="example_id@email.com") }}<br>
+            
+        </p>
+        <p>
+            {{ form.phone_no.label }}<br>
+            {{ form.phone_no(class="form-control", placeholder="XXXXXXXXXX") }}<br>
+            
+        </p>
+        <p>
+            {{ form.address.label }}<br>
+            {{ form.address(class="form-control", placeholder="Please Enter your complete address including state and city") }}<br>
+            
+        </p>
+        <p>
+            {{ form.linkedin_prof.label }}<br>
+            {{ form.linkedin_prof(class="form-control", placeholder="https://www.linkedin.com/in/example_profile") }}<br>
+            
+        </p>        
+        <p>{{ form.submit(class="btn btn-primary") }}</p>
+    </form>
+        </div>
+    </div>
+{% endblock %}

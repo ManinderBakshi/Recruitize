@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+{% if current_user.recruiter == false %}
+<div id="hero" class="service_area">
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        <h1>Scan Report of your Resume</h1>
+        <p>There are total {{data['No. of Words']}} words in your Resume. We have extracted the following details from your Resume.
+        </p>
+        <div class="row">
+            <div class="col-lg-6">
+                <table class="table table-hover">
+                    <h3>WordCloud of Resume:</h3>
+                    <td><img src="/static/img/Created_WordClouds/{{data["WCloudName"]}}" style="width: 100%;"></td>
+                 </table>
+            </div>
+            <div class="col-lg-6">
+                <table class="table table-hover">
+                    <h3>Competencies Scores:</h3>
+                    <td><img src="/static/img/Created_Pie/{{data["Pie"]}}"  style="width: 100%;"></td>
+                 </table>
+            </div>
+        </div>
+        
+        
+        {% if data['Personal Details'] %}
+        
+        <table class="table table-hover">
+            <thead>
+                <tr><th><h2>Personal Details:</h2></th></tr>
+                <tr>
+                  <th scope="col">Name
+                  <th scope="col">Contact Number</th>
+                  <th scope="col">Email</th>
+                </tr>
+            </thead>
+                <tr>
+                <td>{{data['Personal Details']['Name']}}</td>
+                <td>{{data['Personal Details']['Contact No.']}}</td>
+                <td>{{data['Personal Details']['E-Mail']}}</td>
+                </tr>
+        </table>
+        {% endif %}
+        {% if data['Qualifications'] %}
+        
+        <table class="table table-hover">
+            <thead>
+                <tr><th><h2>Qualification Details:</h2></th></tr>
+                <tr>
+                  <th scope="col">Course</th>
+                  <th scope="col">Year</th>
+                  <th scope="col">Percentage</th>
+                </tr>
+            </thead>
+           {% for i in data['Qualifications'] %}
+           <tr>
+               <td>{{i['Qualification']}}</td>
+               <td>{{i['Year']}}</td>
+               <td>{{i['Percentage']}}</td>
+           </tr>
+           {% endfor %}
+        </table>
+        {% endif %}
+        <br>
+        <h2 >Top 10 most used words: </h2>
+        <br>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                  <th scope="col">Word</th>
+                  <th scope="col">Frequency</th>
+                </tr>
+            </thead>
+            {% for key,value in data["Max used Words"].items() %}
+            <tr>
+                <th scope="row">{{key}}</th>
+                <td>{{value}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <h2 >Psychographic Analysis Of Resume:</h2>
+        <br>
+        <div class="col-lg-12 text-center">
+            <table class="table table-hover">
+                <td><img src="/static/img/Created_Graphs/{{data["GName"]}}"  style="width: 80%; height: 55%;"></td>
+             </table>
+        </div>
+        <br>
+        <h2 >Skill Set Scores:</h2>
+        <br>
+        
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                  <th scope="col">Skill Name</th>
+                  <th scope="col">Score</th>
+                  <th scope="col">Skills</th>
+                </tr>
+            </thead>
+         {% for key,value in data["Skills"]["Computer Science Engineering"].items() %}
+         <tr>
+            <th>{{key}}</th>
+            <td>
+                    <div class="c100 p{{value["Score"]}} pink">
+                        <span >{{value["Score"]}}%</span>
+                        <div class="slice">
+                          <div class="bar"></div>
+                          <div class="fill"></div>
+                        </div>
+                    </div>
+            </td>
+            <td>
+                {% for i in value["Skills"] %}
+                {{i}} <br>
+                {% endfor %}
+            </td>
+         </tr>
+         {% endfor %}
+        </table>
+        
+        <br>
+        <br>
+        
+    </div>
+</div>
+     {% else %}
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+      <h1>You are not authorized to access this page</h1>
+
+{% endif %}
+{% endblock %}
