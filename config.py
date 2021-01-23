@@ -7,7 +7,7 @@ class Config():
     '''Config settings class.'''
    
 
-    SQLALCHEMY_DATABASE_URI= 'mysql://root:Pass@word123@localhost/Recruitize'
+    SQLALCHEMY_DATABASE_URI= 'mysql://root:''@localhost/Recruitize'
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
