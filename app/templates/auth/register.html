@@ -14,29 +14,25 @@
             <form action="" method="post" novalidate>
                 {{form.hidden_tag()}}
                 <p>
-                    {{form.username.label}}
-                    {{form.username(class="form-control",style="width: 80%;") }}
+                    {{form.username(class="form-control",style="width: 40%;", placeholder='Username') }}
                     {% for error in form.username.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                     {% endfor %}
                 </p>
                 <p>
-                    {{form.email.label}}
-                    {{form.email(class="form-control",style="width: 80%;") }}
+                    {{form.email(class="form-control",style="width: 40%;", placeholder='E-Mail') }}
                     {% for error in form.email.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                     {% endfor %}
                 </p>
                 <p>
-                    {{form.password.label}}
-                    {{form.password(class="form-control",style="width: 80%;")}}
+                    {{form.password(class="form-control",style="width: 40%;", placeholder='Password')}}
                     {%for error in form.password.errors %}
                     <span style="color:red;">[{{error}}]</span>
                     {% endfor %}
                 </p>
                 <p>
-                    {{form.password2.label}}
-                    {{form.password2(class="form-control",style="width: 80%;")}}
+                    {{form.password2(class="form-control",style="width: 40%;", placeholder='Renter Password')}}
                     {%for error in form.password2.errors %}
                     <span style="color:red;">[{{error}}]</span>
                     {% endfor %}
@@ -49,7 +45,7 @@
                     {% endfor %}
                 </p>
     
-                <p>{{form.submit(class="btn btn-success")}}</p>
+                <p>{{form.submit(class="btn btn-primary")}}</p>
             </form>
     </div>
 </div>

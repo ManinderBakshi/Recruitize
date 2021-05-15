@@ -272,6 +272,7 @@ def add_resume():
 
             doc = request.files["doc"]
             position = request.form.get('position')
+            git = request.form.get('github')
             
             if doc.filename == "":
                 print("No Filename")
@@ -280,11 +281,10 @@ def add_resume():
                 filename = secure_filename(doc.filename)
                 wcloudname = filename.rsplit(".", 1)[0]  + '.png'
                 graph = filename.rsplit(".", 1)[0]  + '.png'
-                wpath = app.config["CREATED_WORDCLOUDS"] + '//' + wcloudname
-                gpath = app.config["CREATED_GRAPHS"] + '//' + graph
+                git = os.path.join(git, '?tab=repositories')
                 path = os.path.join(app.config["UPLOADED_RESUMES"], filename)
   
-                add_resume_resp = requests.post('{0}/api/user/resume'.format(host), json={"path": path, "graph":graph, "wcloudname":wcloudname, "filename": filename, "position":position},
+                add_resume_resp = requests.post('{0}/api/user/resume'.format(host), json={"path": path, "graph":graph, "wcloudname":wcloudname, "filename": filename, "position":position, "git":git,},
                 headers={'Authorization': 'Bearer {}'.format(session['api_token'])})
                 
                 if add_resume_resp.status_code == 200:
@@ -315,14 +315,54 @@ def show_resumes():
     return render_template("show_resumes.html", title='Show Resumes', user_id=user_id, resume_list=resume_list)
 
 
+import  requests
+from bs4 import BeautifulSoup
+
+def repositories(URL):
+    repo_lists=[]
+    page = requests.get(URL)
+
+    soup = BeautifulSoup(page.content, 'html.parser')
+
+    repos = soup.findAll('li', itemprop="owns")
+    for repo in repos:
+        r={}
+        title_repo = repo.find('a', itemprop="name codeRepository")
+        lang = repo.find('span', itemprop="programmingLanguage")
+        status = repo.find('relative-time', class_="no-wrap")
+        repo_url = ("".join(["https://github.com/",title_repo['href']]))
+        repo_page = requests.get(repo_url)
+        new_soup = BeautifulSoup(repo_page.content, 'html.parser')
+        commits_head = new_soup.find('span', class_="d-none d-sm-inline")
+        readme_head = new_soup.find('div', class_="Box-body px-5 pb-5")
+        if(title_repo.text):
+            r["title"] = title_repo.text
+        if(lang):
+            r['languages'] = lang.text
+        if(status):
+           r['status'] = status.text
+        if(commits_head):
+            commits = commits_head.find('strong')
+            r['commits'] = commits.text
+        
+        repo_lists.append(r)
+    
+    return repo_lists
+
 # Analyze Resumes
-@bp.route('/user/scan_resume/<string:filename>', methods=['GET', 'POST'])
+@bp.route('/user/scan_resume/<filename>', methods=['GET', 'POST'])
 @login_required
 def scan_resume(filename):
     path = os.path.join(app.config["UPLOADED_RESUMES"], filename)
     data = create_user_json(filename,path)
 
-
+    resume_json = {}
+    resume_list = {}
+    resume_resp = requests.get('{0}/api/user/resume/{1}'.format(host, filename), headers={'Authorization': 'Bearer {}'.format(session['api_token'])})
+    if resume_resp.status_code == 200:
+        resume_json = resume_resp.json()
+        resume_list = resume_json['resumes']
+    
     
     
     return render_template("analyze_resume.html", title='Analysis', data=data)
@@ -1497,8 +1537,6 @@ def create_user_json(filename,pdf_path):
     bold_list=extract_bold_from_soup(soup)
     companies=extract_companies(bold_list)
     bold_txt=" ".join(bold_list)
-    data["Experience"]=search_exp(bold_txt,companies)
-    #except: print("Experience Error")
     #try:
     data["Useful Links"]=extract_links(soup)
     data["Profile Links"]=extract_profiles(data["Useful Links"])
@@ -1510,7 +1548,5 @@ def create_user_json(filename,pdf_path):
         for j in data['Skills'][i].keys():
             remove_list1+=data['Skills'][i][j]["Skills"]
     
-    
-    #data["Job Recommendations"]=list(best_job(t))
   
     return data

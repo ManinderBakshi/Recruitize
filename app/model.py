@@ -110,6 +110,7 @@ class Resume(db.Model):
     wcloudname = db.Column(db.Text())
     position = db.Column(db.String(120))
     filename = db.Column(db.Text())
+    git = db.Column(db.Text())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
@@ -123,6 +124,7 @@ class Resume(db.Model):
 			'wcloudname': self.wcloudname,
 			'filename': self.filename,
 			'position': self.position,
+			'git': self.git,
 			'user_id': self.user_id
 		}
         return data

@@ -132,12 +132,24 @@ def add_resume_path():
 	wcloudname = request.json['wcloudname']
 	filename = request.json['filename']
 	position = request.json['position']
-	resume = Resume(path=path, graph=graph, wcloudname=wcloudname, filename=filename, position=position, user_id=user.id)
+	git = request.json['git']
+	resume = Resume(path=path, graph=graph, wcloudname=wcloudname, filename=filename, position=position, git=git, user_id=user.id)
 	db.session.add(resume)
 	db.session.commit()
 
 	return jsonify({'msg': 'Resume has been added'})
 
+# Get Resume from Filename
+@bp.route('/api/user/resume/<filename>', methods=['GET'])
+@jwt_required
+def get_resume(filename):
+	resume = Resume.query.filter_by(filename=filename).first()
+	if not resume:
+		return jsonify({'msg':'No Resume found'}), 404
+	output = []
+	#for res in resume:
+	#	output.append(res.to_dict())
+	return jsonify(({'resumes':resume.to_dict()}))	
 
 # Get Resume
 @bp.route('/api/user/<int:user_id>/resume', methods=['GET'])
